@@ -4,8 +4,12 @@ import org.example.Util.GetAction;
 import org.example.container.ComponentContainer;
 import org.example.dto.ProfileDto;
 import org.example.service.ProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MainController {
+    @Autowired
     private ProfileService profileService;
     public void start(){
         boolean t = true;
@@ -14,7 +18,7 @@ public class MainController {
             switch (GetAction.getAction()){
 
 //                case 1 -> bookList();
-//                case 2 -> Search();
+//                case 2 -> search();
                 case 3 -> login();
                 case 4 -> registration();
                 case 0 -> t = false;

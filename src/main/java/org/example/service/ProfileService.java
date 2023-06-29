@@ -8,13 +8,18 @@ import org.example.entity.ProfileEntity;
 import org.example.enums.Role;
 import org.example.enums.StatusProfile;
 import org.example.repository.ProfileRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Component
 public class ProfileService {
+    @Autowired
     public ProfileRepository profileRepository;
+    @Autowired
     private UserController userController;
+    @Autowired
     private AdminController adminController;
     public void register(ProfileDto profile){
         String phone = profile.getPhone();
@@ -54,9 +59,12 @@ public class ProfileService {
         if (profileDto.getRole().equals(Role.STUDENT)) {
             userController.start();
             System.out.println("Welcome user");
-        } else {
-            adminController.start();
+        } else if (profileDto.getRole().equals(Role.ADMIN)){
+            adminController.startAdmin();
             System.out.println("Welcome admin");
+        }else {
+            adminController.startStaff();
+            System.out.println("Welcome staff");
         }
     }
 }

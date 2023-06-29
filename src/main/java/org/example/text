@@ -113,7 +113,7 @@ Profile Roles
     Enter id;
 4. Activate student:
     Enter id:
-1. Student by book:
+5. Student by book:
     id, name, surname, login, phone, status,  takenBookCount, BookOnHand
 
 

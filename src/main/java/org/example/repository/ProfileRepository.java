@@ -12,10 +12,11 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapperResultSetExtractor;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Query;
 import java.util.List;
-
+@Component
 public class ProfileRepository {
     public Boolean addProfile(ProfileDto profile){
         StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
