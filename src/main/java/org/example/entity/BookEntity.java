@@ -18,26 +18,16 @@ public class BookEntity {
     private String title;
     @Column
     private String author;
+    @ManyToOne
+    @JoinColumn (name = "category_id")
+    private CategoryEntity category;
     @Column
-    private String category;
+    private LocalDateTime publishedDate;
     @Column
-    private LocalDateTime publishDate;
-    @Column
-    private LocalDateTime availableDay;
+    private Integer availableDate;
     @Column
     private Boolean visible = true;
     @Column
     private LocalDateTime createdDate;
 
-    public BookEntity() {
-    }
-
-    public BookEntity(String title, String author, String category, LocalDateTime publishDate, LocalDateTime availableDay, LocalDateTime createdDate) {
-        this.title = title;
-        this.author = author;
-        this.category = category;
-        this.publishDate = publishDate;
-        this.availableDay = availableDay;
-        this.createdDate = createdDate;
-    }
 }

@@ -23,12 +23,16 @@ public class ProfileDto {
     public ProfileDto() {
     }
 
-    public ProfileDto(String name, String surname, String login, String password, String phone) {
+    public ProfileDto(Integer id, String name, String surname, String login, String password, String phone, StatusProfile statusProfile, Role role, LocalDateTime createdDate) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
         this.phone = phone;
-
+        this.statusProfile = statusProfile;
+        this.role = role;
+        this.createdDate = createdDate;
     }
+
 }

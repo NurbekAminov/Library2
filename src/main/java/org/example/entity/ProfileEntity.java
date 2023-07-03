@@ -16,22 +16,30 @@ public class ProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String surname;
+
     @Column(nullable = false, unique = true)
     private String login;
+
     @Column(nullable = false)
     private String password;
+
     @Column(unique = true)
     private String phone;
-    @Column
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private StatusProfile statusProfile;
+
     @Column
     @Enumerated(EnumType.STRING)
     private Role role;
+
     @Column
     private LocalDateTime createdDate;
 
@@ -44,5 +52,19 @@ public class ProfileEntity {
         this.login = login;
         this.password = password;
         this.phone = phone;
+    }
+    @Override
+    public String toString() {
+        return "ProfileEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + statusProfile +
+                ", role=" + role +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

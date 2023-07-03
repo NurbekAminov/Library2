@@ -1,21 +1,28 @@
 package org.example.Controller;
 
+import lombok.Setter;
 import org.example.Util.GetAction;
+import org.example.service.ProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
+@Setter
 public class StudentController {
+    @Autowired
+    private ProfileService profileService;
     public void start(){
         boolean t = true;
         while (t){
             show();
             switch (GetAction.getAction()){
 
-//                case 1 -> studentList();
-//                case 2 -> search();
-//                case 3 -> blockStudent();
-//                case 4 -> activateStudent();
-//                case 5 -> studentByBook();
+                case 1 -> profileService.getStudentList();
+                case 2 -> profileService.searchStudent();
+                case 3 -> profileService.blockingStudent();
+                case 4 -> profileService.activateStudent();
+                case 5 -> profileService.studentByBook();
                 case 0 -> t = false;
             }
         }

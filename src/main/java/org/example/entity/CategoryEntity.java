@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,19 +15,27 @@ public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false, unique = true)
+
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
-    @Column
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date")
     private LocalDateTime createdDate;
-    @Column
+
+    @Column(name = "visible")
     private Boolean visible = true;
 
-    public CategoryEntity() {
-    }
+    @OneToMany(mappedBy = "category")
+    private List<BookEntity> bookEntities;
 
-    public CategoryEntity(Integer id, String name, LocalDateTime createdDate) {
-        this.id = id;
-        this.name = name;
-        this.createdDate = createdDate;
+    @Override
+    public String toString() {
+        return "CategoryEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", created_date=" + createdDate +
+                ", visible='" + visible + '\'' +
+                '}';
     }
 }

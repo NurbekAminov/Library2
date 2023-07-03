@@ -14,30 +14,30 @@ import java.time.LocalDateTime;
 public class TakenBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id")
-    private Integer studentId;
+    @JoinColumn(name = "student_id",nullable = false)
+    private ProfileEntity profileEntity;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
-    private Integer bookId;
-    @Column
-    private LocalDateTime createdDate;
+    private BookEntity bookEntity;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "taken_date")
+    private LocalDateTime takenDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "return_date")
+    private LocalDateTime returnDate;
+
     @Column
     @Enumerated(EnumType.STRING)
     private StatusBook status;
-    @Column
+
+    @Column(name = "note")
     private String note;
 
-    public TakenBook() {
-    }
-
-    public TakenBook(Integer id, Integer studentId, Integer bookId, LocalDateTime createdDate, StatusBook status, String note) {
-        this.id = id;
-        this.studentId = studentId;
-        this.bookId = bookId;
-        this.createdDate = createdDate;
-        this.status = status;
-        this.note = note;
-    }
 }

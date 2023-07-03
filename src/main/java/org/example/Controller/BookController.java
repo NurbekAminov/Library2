@@ -1,23 +1,33 @@
 package org.example.Controller;
 
+import lombok.Setter;
 import org.example.Util.GetAction;
+import org.example.service.BookService;
+import org.example.service.TakenBookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
+@Setter
 public class BookController {
+    @Autowired
+    private BookService bookService;
+    @Autowired
+    private TakenBookService takenBookService;
     public void start(){
         boolean t = true;
         while (t){
             show();
             switch (GetAction.getAction()){
 
-//                case 1 -> bookList();
-//                case 2 -> search();
-//                case 3 -> addBook();
-//                case 4 -> removeBook();
-//                case 5 -> booksOnHand();
-//                case 6 -> bookHistory();
-//                case 7 -> bestBooks();
+                case 1 -> bookService.bookList();
+                case 2 -> bookService.search();
+                case 3 -> bookService.addBook();
+                case 4 -> bookService.removeBook();
+                case 5 -> takenBookService.getTakenBooks();
+                case 6 -> takenBookService.getBookHistory();
+                case 7 -> takenBookService.getBestBookList();
                 case 0 -> t = false;
             }
         }

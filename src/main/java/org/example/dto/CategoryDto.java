@@ -13,12 +13,9 @@ public class CategoryDto {
     private LocalDateTime createdDate;
     private Boolean visible = true;
 
-    public CategoryDto() {
-    }
-
-    public CategoryDto(Integer id, String name, LocalDateTime createdDate) {
+    public CategoryDto(Integer id, String name, Boolean visible) {
         this.id = id;
         this.name = name;
-        this.createdDate = createdDate;
+        this.visible = visible;
     }
 }

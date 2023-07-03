@@ -1,10 +1,13 @@
 package org.example.Controller;
 
+import lombok.Setter;
 import org.example.Util.GetAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
+@Setter
 public class AdminController {
     @Autowired
     BookController bookController;
